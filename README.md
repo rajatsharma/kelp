@@ -1,4 +1,4 @@
-# Binaccle
+# Binnacle
 
 Template to create Cli Apps with Rust
 
