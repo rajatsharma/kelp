@@ -10,7 +10,7 @@ Template to create Cli Apps with Rust
 
 ## Setup
 
-- Clone this project or [Use this template](https://github.com/rajatsharma/kdeploy/generate).
+- Clone this project or [Use this template](https://github.com/rajatsharma/binnacle/generate).
 
 - If you are cloning this project you need to delete `.git` directory and initialise a new one.
 
