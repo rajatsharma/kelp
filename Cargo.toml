@@ -1,5 +1,5 @@
 [package]
-name = "binnacle"
+name = "kelp"
 version = "0.1.0"
 authors = ["Rajat Sharma <lunasunkaiser@gmail.com>"]
 edition = "2018"

@@ -1,10 +1,10 @@
 use clap::{App, Arg, ArgMatches, SubCommand};
 
 pub fn command() -> App<'static, 'static> {
-    SubCommand::with_name("commit")
-        .about("Commits staged code")
+    SubCommand::with_name("install")
+        .about("Install Fish plugin")
         .version("1.0")
-        .author("Linus Trovalds")
+        .author("Rajat Sharma")
         .arg(
             Arg::with_name("message")
                 .short("m")
