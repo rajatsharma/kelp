@@ -2,6 +2,7 @@ use clap::{App, Arg, ArgMatches, SubCommand};
 use std::fs::File;
 use std::io::Write;
 use std::process::Command;
+
 const SUBCOMMAND_NAME: &'static str = "install";
 
 pub fn command() -> App<'static, 'static> {
@@ -23,19 +24,30 @@ pub fn run(matches: &ArgMatches) {
         let plugin = matches.value_of("PLUGIN").unwrap();
         let plugin_url = format!("https://github.com/{}", plugin);
         let plugin_name: Vec<&str> = plugin.split('/').collect();
-        let output = Command::new("git")
+
+        Command::new("git")
             .current_dir(format!("{}/.kelp", home_dir))
             .arg("clone")
             .arg(&plugin_url)
-            .spawn();
+            .spawn()
+            .unwrap()
+            .wait()
+            .unwrap();
 
-        output.unwrap().wait().unwrap();
-
-        println!("{}/.kelp/{}/index.fish", home_dir, plugin_name[0]);
-
-        let mut file =
+        let mut plugin_index_file =
             File::create(format!("{}/.kelp/{}/index.fish", home_dir, plugin_name[1])).unwrap();
 
-        file.write_all(b"Hello, world!").unwrap();
+        writeln!(
+            plugin_index_file,
+            "for file in ~/.kelp/{}/{{completions,functions}}/*.fish; [ -r \"$file\" ] && [ -f \"$file\" ] && source \"$file\";end",
+            plugin_name[1]
+        ).unwrap();
+
+        writeln!(
+            plugin_index_file,
+            "source \"$HOME/.kelp/{}/init.fish\"",
+            plugin_name[1]
+        )
+        .unwrap();
     }
 }

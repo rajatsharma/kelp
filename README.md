@@ -5,6 +5,21 @@ Plugin Manager for Fish Shell
 ## Prerequisites
 
 - git
+- cargo
+
+## Installation
+
+- Clone this repository and go to cloned directory.
+
+```sh
+$ git clone https://github.com/rajatsharma/kelp && cd kelp
+```
+
+- Install Kelp.
+
+```sh
+$ cargo install --path .
+```
 
 ## License
 
