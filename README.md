@@ -1,11 +1,27 @@
 # Kelp
 
-Plugin Manager for Fish Shell
+> Easily manage shell scripts and binaries for [Fish](https://fishshell.com/)
 
-## Prerequisites
+- Fast
+- Supports [Oh My Fish!](https://github.com/oh-my-fish/packages-main) plugins.
 
-- git
-- cargo
+## Usage
+
+##### `kelp install`
+
+Installs Fish plugin from github.
+
+```sh
+$ kelp install github_username/plugin_name
+```
+
+##### `kelp uninstall`
+
+Removes installed Fish plugin.
+
+```sh
+$ kelp uninstall github_username/plugin_name
+```
 
 ## Installation
 
