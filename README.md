@@ -1,22 +1,10 @@
-# Binnacle
+# Kelp
 
-Template to create Cli Apps with Rust
+Plugin Manager for Fish Shell
 
 ## Prerequisites
 
-- rustc
-- cargo
-- node/npm
-
-## Setup
-
-- Clone this project or [Use this template](https://github.com/rajatsharma/binnacle/generate).
-
-- If you are cloning this project you need to delete `.git` directory and initialise a new one.
-
-```sh
-$ rm -rf .git && git init
-```
+- git
 
 ## License
 
