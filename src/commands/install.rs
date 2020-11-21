@@ -39,7 +39,7 @@ pub fn run(matches: &ArgMatches) {
 
         writeln!(
             plugin_index_file,
-            "for file in ~/.kelp/{}/{{completions,functions}}/*.fish; [ -r \"$file\" ] && [ -f \"$file\" ] && source \"$file\";end",
+            "for file in ~/.kelp/{}/{{completions,functions,conf.d}}/*.fish; [ -r \"$file\" ] && [ -f \"$file\" ] && source \"$file\";end",
             plugin_name[1]
         ).unwrap();
 
