@@ -9,7 +9,7 @@
 
 ##### `kelp install`
 
-Installs Fish plugin from github.
+Installs Fish plugin from GitHub repository.
 
 ```sh
 $ kelp install github_username/plugin_name
