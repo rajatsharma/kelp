@@ -1,4 +1,5 @@
 use clap::{App, Arg, ArgMatches, SubCommand};
+use std::path::Path;
 use std::process::Command;
 
 const SUBCOMMAND_NAME: &'static str = "install";
@@ -21,7 +22,10 @@ pub fn run(matches: &ArgMatches) {
         let home_dir = std::env::var("HOME").unwrap();
         let plugin = matches.value_of("PLUGIN").unwrap();
         let plugin_url = format!("https://github.com/{}", plugin);
-        let _plugin_name: Vec<&str> = plugin.split('/').collect();
+        let plugin_name: Vec<&str> = plugin.split('/').collect();
+
+        let plugin_dir = format!("{}/.kelp/{}", home_dir, plugin_name[1]);
+        let init_file = format!("{}/init.fish", plugin_dir);
 
         Command::new("git")
             .current_dir(format!("{}/.kelp", home_dir))
@@ -31,5 +35,16 @@ pub fn run(matches: &ArgMatches) {
             .unwrap()
             .wait()
             .unwrap();
+
+        if Path::new(&init_file).exists() {
+            Command::new("fish")
+                .current_dir(&plugin_dir)
+                .arg("-c")
+                .arg("source init.fish")
+                .spawn()
+                .unwrap()
+                .wait()
+                .unwrap();
+        };
     }
 }
