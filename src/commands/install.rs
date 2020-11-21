@@ -39,15 +39,15 @@ pub fn run(matches: &ArgMatches) {
 
         writeln!(
             plugin_index_file,
-            "for file in ~/.kelp/{}/{{completions,functions,conf.d}}/*.fish; [ -r \"$file\" ] && [ -f \"$file\" ] && source \"$file\";end",
+            "for file in ~/.kelp/{}/{{completions,functions,conf.d}}/*.fish; [ -r \"$file\" ] && [ -f \"$file\" ] && source \"$file\"; end",
             plugin_name[1]
         ).unwrap();
 
-        writeln!(
-            plugin_index_file,
-            "source \"$HOME/.kelp/{}/init.fish\"",
-            plugin_name[1]
-        )
-        .unwrap();
+        let source_init_fish = format!(
+            "[ -r \"{0}\" ] && [ -f \"{0}\" ] && source \"{0}\";",
+            format!("$HOME/.kelp/{}/init.fish", plugin_name[1])
+        );
+
+        writeln!(plugin_index_file, "{}", source_init_fish).unwrap();
     }
 }
