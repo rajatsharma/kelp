@@ -18,9 +18,15 @@ pub fn run(matches: &ArgMatches) {
 
         let mut master_index = File::create(format!("{}/.kelp/index.fish", home_dir)).unwrap();
 
-        write!(
+        writeln!(
             master_index,
-            "for dir in */; [ -r \"$dir/index.fish\" ] && [ -f \"$dir/index.fish\" ] && source \"$dir/index.fish\"; end"
+            "for file in ~/.kelp/*/{{conf.d,functions,completions}}/*.fish; [ -r \"$file\" ] && [ -f \"$file\" ] && source \"$file\"; end"
+        )
+        .unwrap();
+
+        writeln!(
+            master_index,
+            "for file in ~/.kelp/*/init.fish; [ -r \"$file\" ] && [ -f \"$file\" ] && source \"$file\"; end;"
         )
         .unwrap();
 
