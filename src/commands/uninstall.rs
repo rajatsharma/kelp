@@ -1,3 +1,4 @@
+use anyhow::Result;
 use clap::{App, Arg, ArgMatches, SubCommand};
 use std::fs::remove_dir_all;
 use std::path::Path;
@@ -18,10 +19,11 @@ pub fn command() -> App<'static, 'static> {
         )
 }
 
-pub fn run(matches: &ArgMatches) {
+pub fn run(matches: &ArgMatches) -> Result<()> {
     if let Some(matches) = matches.subcommand_matches(SUBCOMMAND_NAME) {
-        let home_dir = std::env::var("HOME").unwrap();
+        let home_dir = std::env::var("HOME")?;
         let plugin = matches.value_of("PLUGIN").unwrap();
+
         let plugin_name: Vec<&str> = plugin.split('/').collect();
         let plugin_dir = format!("{}/.kelp/{}", home_dir, plugin_name[1]);
 
@@ -32,13 +34,15 @@ pub fn run(matches: &ArgMatches) {
                 .current_dir(&plugin_dir)
                 .arg("-c")
                 .arg("source uninstall.fish")
-                .spawn()
-                .unwrap()
-                .wait()
-                .unwrap();
+                .spawn()?
+                .wait()?;
         };
 
-        remove_dir_all(plugin_dir).unwrap();
+        remove_dir_all(plugin_dir)?;
         println!("Removed: {}", plugin_name[1]);
+
+        Ok(())
+    } else {
+        Ok(())
     }
 }

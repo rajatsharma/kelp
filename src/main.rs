@@ -16,7 +16,7 @@ fn main() {
         .subcommand(uninstall::command())
         .get_matches();
 
-    init::run(&matches);
-    install::run(&matches);
-    uninstall::run(&matches);
+    init::run(&matches).unwrap();
+    install::run(&matches).unwrap();
+    uninstall::run(&matches).unwrap();
 }

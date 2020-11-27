@@ -1,3 +1,4 @@
+use anyhow::Result;
 use clap::{App, Arg, ArgMatches, SubCommand};
 use std::path::Path;
 use std::process::Command;
@@ -17,9 +18,9 @@ pub fn command() -> App<'static, 'static> {
         )
 }
 
-pub fn run(matches: &ArgMatches) {
+pub fn run(matches: &ArgMatches) -> Result<()> {
     if let Some(matches) = matches.subcommand_matches(SUBCOMMAND_NAME) {
-        let home_dir = std::env::var("HOME").unwrap();
+        let home_dir = std::env::var("HOME")?;
         let plugin = matches.value_of("PLUGIN").unwrap();
         let plugin_url = format!("https://github.com/{}", plugin);
         let plugin_name: Vec<&str> = plugin.split('/').collect();
@@ -31,20 +32,20 @@ pub fn run(matches: &ArgMatches) {
             .current_dir(format!("{}/.kelp", home_dir))
             .arg("clone")
             .arg(&plugin_url)
-            .spawn()
-            .unwrap()
-            .wait()
-            .unwrap();
+            .spawn()?
+            .wait()?;
 
         if Path::new(&init_file).exists() {
             Command::new("fish")
                 .current_dir(&plugin_dir)
                 .arg("-c")
                 .arg("source init.fish")
-                .spawn()
-                .unwrap()
-                .wait()
-                .unwrap();
+                .spawn()?
+                .wait()?;
         };
+
+        Ok(())
+    } else {
+        Ok(())
     }
 }
