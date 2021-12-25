@@ -1,40 +1,25 @@
 # Kelp
 
-> Easily manage shell scripts and binaries for [Fish](https://fishshell.com/)
-
-- Fast
-- Supports [Oh My Fish!](https://github.com/oh-my-fish/packages-main) plugins.
+> Source [Fish Shell](https://fishshell.com/) scripts from Github gists
 
 ## Usage
 
-##### `kelp install`
-
-Installs Fish plugin from GitHub repository.
+Add this to your fish config to initialize kelp
 
 ```sh
-$ kelp install github_username/plugin_name
+kelp init | source
 ```
-
-##### `kelp uninstall`
-
-Removes installed Fish plugin.
 
 ```sh
-$ kelp uninstall github_username/plugin_name
+kelp get raw_gist_url
 ```
+
+Contents of the gist will now be sourced every time to run shell.
 
 ## Installation
 
-- Clone this repository and go to cloned directory.
-
 ```sh
-$ git clone https://github.com/rajatsharma/kelp && cd kelp
-```
-
-- Install Kelp.
-
-```sh
-$ cargo install --path .
+go get github.com/rajatsharma/kelp
 ```
 
 ## License
