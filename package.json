@@ -1,0 +1,17 @@
+{
+  "name": "kelp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rajatsharma/kelp",
+  "author": "Rajat Sharma <lunasunkaiser@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "stack --local-bin-path . build --copy-bins"
+  },
+  "files": [
+    "kelp-exe"
+  ],
+  "bin": {
+    "kelp": "kelp-exe"
+  }
+}
