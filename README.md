@@ -19,7 +19,7 @@ Contents of the gist will now be sourced every time to run shell.
 ## Installation
 
 ```sh
-go get github.com/rajatsharma/kelp
+npm i -g https://github.com/rajatsharma/kelp
 ```
 
 ## License
