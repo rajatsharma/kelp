@@ -8,9 +8,6 @@
   "scripts": {
     "prepare": "stack --local-bin-path . build --copy-bins"
   },
-  "files": [
-    "kelp-exe"
-  ],
   "bin": {
     "kelp": "kelp-exe"
   }
