@@ -6,7 +6,7 @@
   "author": "Rajat Sharma <lunasunkaiser@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prepare": "stack --local-bin-path . build --copy-bins"
+    "preinstall": "stack --local-bin-path . build --copy-bins"
   },
   "bin": {
     "kelp": "./kelp-exe"
