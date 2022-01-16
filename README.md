@@ -19,7 +19,7 @@ Contents of the gist will now be sourced every time to run shell.
 ## Installation
 
 ```sh
-npm i -g https://github.com/rajatsharma/kelp
+nix-env -i -f https://github.com/rajatsharma/kelp/archive/master.tar.gz --option system x86_64-darwin
 ```
 
 ## License
