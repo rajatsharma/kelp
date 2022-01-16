@@ -8,6 +8,6 @@
     "prepare": "stack --local-bin-path . build --copy-bins"
   },
   "bin": {
-    "kelp": "./kelp-exe"
+    "kelp": "./kelp"
   }
 }
