@@ -28,7 +28,7 @@ library:
   source-dirs: src
 
 executables:
-  kelp-exe:
+  kelp:
     main:                Main.hs
     source-dirs:         app
     ghc-options:

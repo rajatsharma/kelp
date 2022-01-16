@@ -5,7 +5,8 @@
   "author": "Rajat Sharma <lunasunkaiser@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "install": "stack --local-bin-path . build --copy-bins"
+    "install": "stack install",
+    "uninstall": "rm -rf `stack path --local-bin`/kelp"
   },
   "bin": {
     "kelp": "./kelp-exe"
