@@ -24,4 +24,4 @@ yarn global add https://github.com/rajatsharma/kelp
 
 ## License
 
-[![GPL-3.0](https://img.shields.io/badge/-GPL3-black?style=flat-square)](https://github.com/rajatsharma/kelp/blob/master/COPYING)
+[![BSD 3-Clause](https://img.shields.io/badge/-BSD3-black?style=flat-square)](/LICENSE)
