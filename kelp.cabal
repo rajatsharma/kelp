@@ -1,6 +1,6 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.6.
+-- This file has been generated from package.yaml by hpack version 0.34.5.
 --
 -- see: https://github.com/sol/hpack
 
@@ -13,7 +13,6 @@ author:         Author name here
 maintainer:     example@example.com
 copyright:      2022 Author name here
 license:        BSD3
-license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
@@ -22,12 +21,25 @@ source-repository head
   type: git
   location: https://github.com/githubuser/kelp
 
-executable kelp
-  main-is: Main.hs
-  other-modules:
+library
+  exposed-modules:
       Kelp
       Kelp.Get
       Kelp.Init
+  other-modules:
+      Paths_kelp
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , directory
+    , optparse-applicative
+    , process
+  default-language: Haskell2010
+
+executable kelp
+  main-is: Main.hs
+  other-modules:
       Paths_kelp
   hs-source-dirs:
       app
@@ -35,6 +47,7 @@ executable kelp
   build-depends:
       base >=4.7 && <5
     , directory
+    , kelp
     , optparse-applicative
     , process
   default-language: Haskell2010

@@ -24,6 +24,9 @@ dependencies:
 - process
 - directory
 
+library:
+  source-dirs: src
+
 executables:
   kelp:
     main:                Main.hs
@@ -32,3 +35,5 @@ executables:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
+    dependencies:
+    - kelp
